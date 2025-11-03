@@ -67,9 +67,7 @@
         //////////////////////////////////////////////////////////////////
         /////////////////// YOUR CODE BELOW HERE /////////////////////////
         //////////////////////////////////////////////////////////////////
-
         // TODO 2 - Variable declarations
-
 
 
 
@@ -79,12 +77,45 @@
          * Each time it is called, it should move the Box to a new location.
          * If the box drifts off the screen, turn it around!
          */
-        function update() {
+        // Variable declarations below here
+var positionX = 0;
+var points = 0;
+var speed = 10; // Initial speed (Will be overridden by the formula on the first click)
 
-        
+// --- The 'update' function runs constantly (20 times per second) ---
+function update() {
+    // TODO 5: Use speed variable to move the box
+    positionX += speed; 
 
-          
-        }
+    // TODO 2: Use positionX to move the box
+    moveBoxTo(positionX); 
+
+    // TODO 6: Check for right boundary and reverse speed
+    if (positionX > boardWidth) { 
+      speed *= -1; // Reverse direction
+    }
+    
+    // TODO 7: Check for left boundary and reverse speed
+    else if (positionX < 0) { 
+      speed *= -1; // Reverse direction
+    }
+}
+
+// --- The 'handleBoxClick' function runs when the box is clicked ---
+function handleBoxClick() {
+    // TODO 4: Increment points
+    points++; 
+    
+    // TODO 8: Fix the speed bug with a linear formula
+    // This calculates a new, positive speed based on the score
+    speed = 3 * points + 10; 
+    
+    // TODO 3: Reset positionX to 0
+    positionX = 0; 
+    
+    // TODO 4: Update the box text to display the current score
+    changeBoxText(points); 
+}
 
         /**
          * This Function will be called each time the box is clicked.
@@ -93,13 +124,16 @@
          * - increase the speed
          * - move the box to the left side of the screen.
          */
+        var positionX = 0;
+          var points = 0;
+          var speed = 10;
         function handleBoxClick() {
-
-
-
-
-        }
-
+          positionX = 0;
+          changeBoxText(points);
+        points++;
+        speed = speed  + 3;
+        speed += 3;
+}
 
         
       })();
